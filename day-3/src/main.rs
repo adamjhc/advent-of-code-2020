@@ -12,8 +12,7 @@ fn part_1() {
     let mut map: Vec<Vec<char>> = Vec::new();
     for (i, line) in lines.enumerate() {
         map.push(Vec::new());
-        let l = line.unwrap();
-        for chr in l.chars() {
+        for chr in line.unwrap().chars() {
             map[i].push(chr)
         }
     }
