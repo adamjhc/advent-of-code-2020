@@ -114,9 +114,11 @@ fn part_2() {
         seats[seat_id] = 1;
     }
 
-    for (i, is_filled) in seats.iter().enumerate() {
-        if *is_filled == 0 {
-            println!("{}", i)
+    for i in 0..seats.len() {
+        if i > 0 && i < seats.len() {
+            if seats[i - 1] == 1 && seats[i] == 0 && seats[i + 1] == 1 {
+                println!("{}", i)
+            }
         }
     }
 }
