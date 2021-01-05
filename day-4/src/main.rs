@@ -5,10 +5,9 @@ fn main() {
 }
 
 fn part_1() {
-    let batch = fs::read_to_string("./input.txt").unwrap();
-    let batch2 = batch.to_owned();
+    let batch = fs::read_to_string("./input.txt").unwrap().to_owned();
     let mut valid = 0;
-    for passport in batch2.split("\n\n").map(str::to_owned) {
+    for passport in batch.split("\n\n").map(str::to_owned) {
         let mut attributes = 0;
         for pairs in passport.split_whitespace().map(str::to_owned) {
             let pair = pairs.split(':').map(str::to_owned).collect::<Vec<_>>();
