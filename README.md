@@ -1,6 +1,6 @@
 # Advent of Code 2020
 
-![Build and Test](https://github.com/adamjhc/advent-of-code-2020/workflows/Build/badge.svg)
+![Build](https://github.com/adamjhc/advent-of-code-2020/workflows/Build/badge.svg)
 
 ## Days
 
