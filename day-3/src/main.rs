@@ -42,5 +42,5 @@ fn count_trees_in_path(right: usize, down: usize) -> i64 {
         col %= col_size;
     }
 
-    return trees;
+    trees
 }
