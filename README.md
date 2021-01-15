@@ -12,7 +12,7 @@
 - [Day 6](./day-6)
 - [Day 7](./day-7)
 - [Day 8](./day-8)
-- Day 9
+- [Day 9](./day-9)
 - Day 10
 - Day 11
 - Day 12
