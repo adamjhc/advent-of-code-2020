@@ -4,15 +4,15 @@
 
 ## Days
 
-- [Day 1](./day-1)
-- [Day 2](./day-2)
-- [Day 3](./day-3)
-- [Day 4](./day-4)
-- [Day 5](./day-5)
-- [Day 6](./day-6)
-- [Day 7](./day-7)
-- [Day 8](./day-8)
-- [Day 9](./day-9)
+- [Day 01](./day-01)
+- [Day 02](./day-02)
+- [Day 03](./day-03)
+- [Day 04](./day-04)
+- [Day 05](./day-05)
+- [Day 06](./day-06)
+- [Day 07](./day-07)
+- [Day 08](./day-08)
+- [Day 09](./day-09)
 - [Day 10](./day-10)
 - [Day 11](./day-11)
 - Day 12
