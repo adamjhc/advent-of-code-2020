@@ -1,9 +1,9 @@
 use std::fs::File;
-use std::io::{BufRead, BufReader, Lines, Result};
+use std::io::{BufRead, BufReader, Lines};
 use std::path::Path;
 
 fn main() {
-    let years = read_input();
+    let years = read_input("./input.txt");
 
     println!("{}", part_1(&years));
     println!("{}", part_2(&years));
@@ -37,9 +37,9 @@ fn part_2(years: &Vec<i32>) -> i32 {
     panic!()
 }
 
-fn read_input() -> Vec<i32> {
+fn read_input(input_file: &str) -> Vec<i32> {
     let mut years = Vec::new();
-    let lines = read_lines("./input.txt").expect("./input.txt not found");
+    let lines = read_lines(Path::new(input_file));
     for line in lines {
         years.push(line.unwrap().parse::<i32>().unwrap());
     }
@@ -47,28 +47,28 @@ fn read_input() -> Vec<i32> {
     years
 }
 
-fn read_lines<P>(filename: P) -> Result<Lines<BufReader<File>>>
+fn read_lines<P>(filename: P) -> Lines<BufReader<File>>
 where
     P: AsRef<Path>,
 {
-    let file = File::open(filename)?;
-    Ok(BufReader::new(file).lines())
+    let file = File::open(&filename).expect(&format!("{} not found", filename.as_ref().display()));
+    BufReader::new(file).lines()
 }
 
 #[cfg(test)]
-mod tests {
+mod day_01_tests {
     use super::*;
 
     #[test]
     fn part_1_gives_correct_answer() {
-        let years = read_input();
+        let years = read_input("./input.txt");
 
         assert_eq!(part_1(&years), 1006875)
     }
 
     #[test]
     fn part_2_gives_correct_answer() {
-        let years = read_input();
+        let years = read_input("./input.txt");
 
         assert_eq!(part_2(&years), 165026160)
     }
