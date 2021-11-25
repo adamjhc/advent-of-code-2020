@@ -2,6 +2,8 @@
 
 ![Build](https://github.com/adamjhc/advent-of-code-2020/workflows/Build/badge.svg)
 
+[2019](https://github.com/adamjhc/advent-of-code-2020) | 2020
+
 ## Days
 
 - [`Day 01`](./day-01)
