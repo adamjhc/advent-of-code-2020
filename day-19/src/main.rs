@@ -18,10 +18,47 @@ enum ExpandedRule {
 }
 
 fn main() {
-    println!("{}", part_1());
+    let (mut rules, messages) = read_rules_and_messages();
+
+    println!(
+        "Part 1: {}",
+        count_messages_matching_zero(&rules, &messages)
+    );
+
+    rules.insert(
+        8,
+        Rule::Expand(ExpandedRule::Double((vec![42], vec![42, 8]))),
+    );
+    rules.insert(
+        11,
+        Rule::Expand(ExpandedRule::Double((vec![42, 31], vec![42, 11, 31]))),
+    );
+
+    println!(
+        "Part 2: {}",
+        count_messages_matching_zero(&rules, &messages),
+    );
 }
 
-fn part_1() -> usize {
+fn count_messages_matching_zero(rules: &HashMap<usize, Rule>, messages: &Vec<String>) -> usize {
+    // generate messages that match rule 0
+    //      recursively follow tree of rules starting at 0
+    let rule_zero = rules.get(&0).unwrap();
+    let rule_zero_messages = parse(&rules, rule_zero);
+
+    // count number of messages that match those generated
+    let rule_zero_matches = messages.iter().fold(0, |count, message| {
+        if rule_zero_messages.contains(message) {
+            count + 1
+        } else {
+            count
+        }
+    });
+
+    rule_zero_matches
+}
+
+fn read_rules_and_messages() -> (HashMap<usize, Rule>, Vec<String>) {
     let file = File::open("./input.txt").unwrap();
     let mut lines = BufReader::new(file).lines().into_iter();
 
@@ -117,21 +154,7 @@ fn part_1() -> usize {
     // read in all messages
     let messages: Vec<String> = lines.map(Result::unwrap).collect();
 
-    // generate messages that match rule 0
-    //      recursively follow tree of rules starting at 0
-    let rule_zero = rules.get(&0).unwrap();
-    let rule_zero_messages = parse(&rules, rule_zero);
-
-    // count number of messages that match those generated
-    let rule_zero_matches = messages.iter().fold(0, |count, message| {
-        if rule_zero_messages.contains(message) {
-            count + 1
-        } else {
-            count
-        }
-    });
-
-    rule_zero_matches
+    (rules, messages)
 }
 
 fn parse(rules: &HashMap<usize, Rule>, rule: &Rule) -> Vec<String> {
@@ -173,6 +196,8 @@ mod day_19_tests {
 
     #[test]
     fn part_1_gives_correct_answer() {
-        assert_eq!(part_1(), 272);
+        let (rules, messages) = read_rules_and_messages();
+
+        assert_eq!(count_messages_matching_zero(&rules, &messages), 272);
     }
 }
