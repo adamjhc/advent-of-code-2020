@@ -18,10 +18,10 @@ enum ExpandedRule {
 }
 
 fn main() {
-    part_1();
+    println!("{}", part_1());
 }
 
-fn part_1() {
+fn part_1() -> usize {
     let file = File::open("./input.txt").unwrap();
     let mut lines = BufReader::new(file).lines().into_iter();
 
@@ -131,7 +131,7 @@ fn part_1() {
         }
     });
 
-    println!("{}", rule_zero_matches);
+    rule_zero_matches
 }
 
 fn parse(rules: &HashMap<usize, Rule>, rule: &Rule) -> Vec<String> {
@@ -165,4 +165,14 @@ fn collect_messages(rules: &HashMap<usize, Rule>, subrule: &Vec<usize>) -> Vec<S
     }
 
     messages
+}
+
+#[cfg(test)]
+mod day_19_tests {
+    use super::*;
+
+    #[test]
+    fn part_1_gives_correct_answer() {
+        assert_eq!(part_1(), 272);
+    }
 }
