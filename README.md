@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/adamjhc/advent-of-code-2020/workflows/Build/badge.svg)
 
-[2019](https://github.com/adamjhc/advent-of-code-2019) | 2020
+[2019](https://github.com/adamjhc/advent-of-code-2019) | 2020 | [2021](https://github.com/adamjhc/advent-of-code-2021)
 
 ## Days
 
